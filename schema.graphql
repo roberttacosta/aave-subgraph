@@ -1,7 +1,64 @@
-type Upgraded @entity(immutable: true) {
-  id: Bytes!
-  implementation: Bytes! # address
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
+type FlashLoan @entity {
+  id: ID!
+  asset: Bytes!
+  initiator: Bytes!
+  amount: BigInt!
+  premium: BigInt!
+  interestRateMode: Int!
+  referralCode: Int!
+  timestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type FlashLoanSimple @entity {
+  id: ID!
+  asset: Bytes!
+  initiator: Bytes!
+  amount: BigInt!
+  premium: BigInt!
+  referralCode: Int!
+  timestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Borrow @entity {
+  id: ID!
+  reserve: Bytes!
+  user: Bytes!
+  amount: BigInt!
+  borrowRate: BigInt!
+  interestRateMode: Int!
+  referralCode: Int!
+  timestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Repay @entity {
+  id: ID!
+  reserve: Bytes!
+  user: Bytes!
+  amount: BigInt!
+  useATokens: Boolean!
+  timestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Supply @entity {
+  id: ID!
+  reserve: Bytes!
+  user: Bytes!
+  amount: BigInt!
+  referralCode: Int!
+  timestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Withdraw @entity {
+  id: ID!
+  reserve: Bytes!
+  user: Bytes!
+  to: Bytes!
+  amount: BigInt!
+  timestamp: BigInt!
   transactionHash: Bytes!
 }
